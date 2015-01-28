@@ -6,7 +6,7 @@ end up with a load of mp4 files that are missing the titles you set in iOS. This
 
 To use:
 
-1) transfer all the mp4s files and the Recordings.db* files (usually three of them) to a single directory on your desktop (I use iFunbox for this)
-2) run the script 
+# transfer all the mp4s files and the Recordings.db* files (usually three of them) to a single directory on your desktop (I use iFunbox for this)
+# run the script 
 
 The .waveform and .composition files aren't needed.

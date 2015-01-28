@@ -3,7 +3,7 @@
 #
 # Quick script for naming the mp4 files produced by the Voice Memos app on iOS (tested on iOS 8.1.2).
 #
-#
+# Alex Hunsley 2015-01
 #
 
 import sqlite3

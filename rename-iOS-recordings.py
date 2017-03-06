@@ -9,25 +9,28 @@
 import sqlite3
 import os
 import ntpath
+# import datetime
 
 print
 
 conn = sqlite3.connect('Recordings.db')
 c = conn.cursor()
-c.execute("select ZPATH, ZCUSTOMLABEL from ZRECORDING")
+c.execute('select ZPATH, ZCUSTOMLABEL, datetime(ZDATE + 978307200, "unixepoch", "localtime") from ZRECORDING')
 
 res = c.fetchall()
 
 fileNotFoundCount = 0
 fileRenamedCount = 0
 
-for (filePath, fileComment) in res:
+for (filePath, fileComment, fileDate) in res:
 	filename = ntpath.basename(filePath)
-	newFilename = "%s %s.mp4" % (filename[:-4], fileComment)
+	print "%s, %s, %s" % (filename, fileComment, fileDate)
+	newFilename = "%s %s.mp4" % (fileComment, fileDate.split(" ")[0])
 	print "Renaming %s -> %s" % (filename, newFilename)
 
 	if (os.path.exists(filename)):
 		fileRenamedCount += 1
+		# print "Skipping %s" % newFilename
 		os.rename(filename, newFilename)
 	else:
 		fileNotFoundCount += 1
